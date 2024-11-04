@@ -8,6 +8,7 @@ function App() {
   const [comics, setComics] = useState([]);
   const [selectedComic, setSelectedComic] = useState(null);
   const [favourites, setFavourites] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=>{
     const getComics = async() =>{
@@ -16,6 +17,7 @@ function App() {
     };
 
       getComics();
+      setLoading(false);
   }, []);
 
   const handleSelectComic = async (comicId)=>{
@@ -32,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <h1>Marvel Comics</h1>
-      <ComicList comics={comics}/>
+      <ComicList comics={comics} handleSelectComic={handleSelectComic}/>
     </div>
   );
 }

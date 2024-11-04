@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/ComicList.module.css'
 
-export default function ComicList({comics}){
+export default function ComicList({comics, handleSelectComic}){
     return(
         <div className={styles.comicListContainer}>
             {comics.map((comic)=>{
