@@ -1,5 +1,16 @@
 /* ComicDetail.module.css */
 
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9); /* Comienza un poco más pequeño */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1); /* Tamaño normal */
+    }
+}
+
 .modalBackground {
     position: fixed;
     top: 0;
@@ -19,9 +30,12 @@
     border-radius: 8px;
     width: 90%;
     max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
     color: #ffffff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
+    animation: fadeInScale 0.3s ease-out; /* Aplica la animación al abrir */
 }
 
 .closeButton {
@@ -37,7 +51,8 @@
 
 .comicImage {
     width: 100%;
+    max-height: 400px;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 20px;
-    object-fit: cover;
 }
