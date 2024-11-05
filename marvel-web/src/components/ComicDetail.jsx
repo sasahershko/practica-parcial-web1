@@ -19,6 +19,7 @@ export default function ComicDetail ({ comic, onClose }) {
                 <p><strong>Número de páginas:</strong> {comic.pageCount}</p>
                 <p><strong>Fecha de publicación:</strong> {comic.dates.find(date => date.type === "onsaleDate")?.date.slice(0, 10)}</p>
                 <p><strong>Series:</strong> {comic.series.name}</p>
+                <p><strong>Precio:</strong> {comic.prices[0].price ? `${comic.prices[0].price}$` : "No disponible"}</p>
 
                 <div className={styles.characterSection}>
                     <h3>Personajes:</h3>
