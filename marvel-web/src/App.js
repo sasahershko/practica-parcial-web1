@@ -9,6 +9,7 @@ function App() {
   const [selectedComic, setSelectedComic] = useState(null);
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(()=>{
     const getComics = async() =>{
@@ -23,6 +24,7 @@ function App() {
   const handleSelectComic = async (comicId)=>{
     const comic = await fetchSpecificComic(comicId);
     setSelectedComic(comic);
+    console.log(comic);
   };
 
   const handleFavouritesComics = async (comic) =>{
