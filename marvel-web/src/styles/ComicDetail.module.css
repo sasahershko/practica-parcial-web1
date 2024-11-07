@@ -86,8 +86,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilos de texto del título */
-.modalContent h1 {
+/* Título del cómic */
+.modalContent h2 {
     font-size: 1.8rem;
     font-weight: bold;
     color: #ffdd00;
@@ -100,33 +100,47 @@
 }
 
 /* Estilo de las etiquetas (Descripción, Número de páginas, etc.) */
-.modalContent .comicDetailLabel {
+.modalContent p strong {
     font-weight: bold;
     color: #ffa516;
     font-size: 1.1rem;
-    margin-top: 10px;
-    display: block;
+    display: inline-block;
+    margin-right: 5px;
 }
 
-/* Estilo de los valores */
-.modalContent .comicDetailValue {
+/* Valores de los detalles */
+.modalContent p {
     color: #dddddd;
     font-size: 1rem;
     line-height: 1.6;
+    margin-top: 8px;
 }
 
-/* Estilo de la sección de personajes */
-.modalContent .charactersSection {
+/* Sección de personajes */
+.characterSection h3 {
     font-weight: bold;
     color: #ffdd00;
-    font-size: 1.1rem;
-    margin-top: 15px;
+    font-size: 1.2rem;
+    margin-top: 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-align: left;
 }
 
-/* Texto de personajes */
-.modalContent .charactersText {
+/* Lista de personajes */
+.characterSection ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.characterSection ul li {
+    color: #dddddd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.characterSection p {
     color: #dddddd;
     font-size: 0.95rem;
     line-height: 1.6;
