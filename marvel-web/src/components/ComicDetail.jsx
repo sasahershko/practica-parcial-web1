@@ -1,13 +1,30 @@
-// src/components/ComicDetail.jsx
-import React from 'react';
+import {useState, useEffect} from 'react';
 import styles from '../styles/ComicDetail.module.css'; 
 import InfoCharacter from './InfoCharacter';
 
 export default function ComicDetail ({ comic, onClose }) {
-    if (!comic){
-        console.log('No hay comic seleccionad');
-        return null;
-    }
+    // if (!comic){
+    //     console.log('No hay comic seleccionad');
+    //     return null;
+    // }
+
+    const [favourites, setFavorites] = useState([]);
+
+    //cargar favoritos de local storage
+    useEffect(() => {
+        const savedFavourites= JSON.parse(localStorage.getItem('favouriteComics')) || [] ;
+        setFavorites(savedFavourites);
+    }, []);
+
+    //añadir comic a favoritos
+    useEffect(()=>{
+        localStorage.setItem('favouriteComics', JSON.stringify(favourites));
+    }, [favourites]);
+
+    //función para añadir/eliminar favoritos
+    // const handleFavourite = (comic) =>{
+
+    // };
 
     return (
         <div className={styles.modalBackground} onClick={onClose}>
@@ -25,18 +42,20 @@ export default function ComicDetail ({ comic, onClose }) {
                 />
                 <p><strong>Descripción:</strong> {comic.description || "No hay descripción disponible."}</p>
                 <p><strong>Número de páginas:</strong> {comic.pageCount}</p>
-                <p><strong>Fecha de publicación:</strong> {comic.modified}</p>
+                <p><strong>Fecha de modificación:</strong> {comic.modified}</p>
                 <p><strong>Series:</strong> {comic.series.name}</p>
                 <p><strong>Precio:</strong> {comic.prices[0].price ? `${comic.prices[0].price}$` : "No disponible"}</p>
 
                 <div className={styles.characterSection}>
                     <h3>Personajes:</h3>
                     {comic.characters?.items?.length > 0 ? (
-                        <div>
+                        <div className={styles.charactersContainer}>
                             {comic.characters.items.map((character) => (
-                                <div>
-                                    <InfoCharacter character={character} characterID={character.resourceURI}/> 
-                                </div>
+                                <InfoCharacter
+                                    key={character.resourceURI}
+                                    character={character}
+                                    characterID={character.resourceURI}
+                                /> 
                             ))}
                         </div>
                     ) : (

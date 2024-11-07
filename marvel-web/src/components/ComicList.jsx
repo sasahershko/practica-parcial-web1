@@ -19,6 +19,7 @@ export default function ComicList({ comics, onSelectComic }) {
                         className={styles.comicImage}
                     />
                     <h3 className={styles.comicTitle}>{comic.title}</h3>
+                    <p className={styles.comicTitle}>{comic.modified}</p>
                 </div>
             ))}
         </div>
