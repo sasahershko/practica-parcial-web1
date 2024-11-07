@@ -6,8 +6,10 @@ import ComicDetail from './components/ComicDetail';
 
 export default function App () {
     const [comics, setComics] = useState([]);
-    const [selectedComic, setSelectedComic] = useState(null); // Estado para el cómic seleccionado
-    const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
+    const [selectedComic, setSelectedComic] = useState(null); 
+    const [showModal, setShowModal] = useState(false); 
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const getComics = async () => {
@@ -19,23 +21,33 @@ export default function App () {
 
 
     const handleSelectComic = async (comicId) => {
-      const comic = await fetchSpecificComic(comicId); 
-      setSelectedComic(comic); 
-      setShowModal(true); 
+        setLoading(true);
+        const comic = await fetchSpecificComic(comicId); 
+        setSelectedComic(comic); 
+        setShowModal(true); 
+        setLoading(false);
   };
   
 
-    // Función para cerrar el modal
     const closeModal = () => {
-        setShowModal(false); // Oculta el modal
-        setSelectedComic(null); // Limpia el cómic seleccionado
+        //oculto modal
+        setShowModal(false); 
+        //limpio comic seleccionado
+        setSelectedComic(null); 
     };
 
     return (
         <div>
-            <h1>Marvel Comics</h1>
+            <h1 className='title'>Marvel Comics</h1>
             <ComicList comics={comics} onSelectComic={handleSelectComic} />
-            {showModal && <ComicDetail comic={selectedComic} onClose={closeModal} />}
+
+            {loading && (
+                <div className="spinner-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
+
+            {showModal && !loading && (<ComicDetail comic={selectedComic} onClose={closeModal} />)}
         </div>
     );
 };

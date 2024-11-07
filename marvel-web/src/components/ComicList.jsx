@@ -9,7 +9,7 @@ export default function ComicList({ comics, onSelectComic }) {
                 <div
                     key={comic.id}
                     className={styles.comicItem}
-                    onClick={() => onSelectComic(comic.id)} // Llama a onSelectComic con el ID del cómic
+                    onClick={() => onSelectComic(comic.id)}
                 >
                     <img
                         src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}

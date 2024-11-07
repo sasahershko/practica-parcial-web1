@@ -1,0 +1,52 @@
+body{
+    background-color: #000;
+}
+
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+}
+
+/* Spinner CSS */
+.spinner {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: 
+      radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
+      conic-gradient(#0000 30%, #ffa516);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: l13 1s infinite linear;
+}
+
+@keyframes l13 { 
+    100% { transform: rotate(1turn); }
+}
+
+.title {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 6rem;
+    background: linear-gradient(90deg, #ff0000, #ffdd00, #ff0000);
+    background-size: 200%;
+    color: transparent; 
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-transform: uppercase;
+    text-align: center;
+    animation: gradientShift 2s infinite linear;
+    margin: 20px 0;
+}
+
+/* Animación para desplazar el gradiente */
+@keyframes gradientShift {
+    0% { background-position: 0%; }
+    100% { background-position: 100%; }
+}
