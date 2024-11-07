@@ -1,5 +1,5 @@
 import './App.css';
-import { fetchComics, fetchSpecificComic } from './utils/marvelApi';
+import {fetchInfo } from './utils/marvelApi';
 import {useState, useEffect} from 'react';
 import ComicList from './components/ComicList';
 import ComicDetail from './components/ComicDetail';
@@ -13,22 +13,21 @@ export default function App () {
 
     useEffect(() => {
         const getComics = async () => {
-            const comicData = await fetchComics();
+            const comicData = await fetchInfo('comics');
             setComics(comicData);
         };
         getComics();
     }, []);
 
 
-    const handleSelectComic = async (comicId) => {
+    const handleSelectComic = async (info) => {
         setLoading(true);
-        const comic = await fetchSpecificComic(comicId); 
+        const comic = await fetchInfo(info); 
         setSelectedComic(comic); 
         setShowModal(true); 
         setLoading(false);
   };
   
-
     const closeModal = () => {
         //oculto modal
         setShowModal(false); 

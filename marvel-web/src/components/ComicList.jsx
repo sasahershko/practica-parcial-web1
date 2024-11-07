@@ -3,13 +3,15 @@ import styles from '../styles/ComicList.module.css'
 
 
 export default function ComicList({ comics, onSelectComic }) {
+    //crear función para coger el último segmento de la url que será el id del personajes
+
     return (
         <div className={styles.comicListContainer}>
             {comics.map((comic) => (
                 <div
                     key={comic.id}
                     className={styles.comicItem}
-                    onClick={() => onSelectComic(comic.id)}
+                    onClick={() => onSelectComic('comics/' + comic.id)}
                 >
                     <img
                         src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
