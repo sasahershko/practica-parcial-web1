@@ -1,0 +1,32 @@
+/* InfoCharacter.module.css */
+
+.characterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #1e2228;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
+    margin: 10px auto;
+    border: 2px solid #ffa516;
+    text-align: center;
+}
+
+.characterName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffdd00;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.characterImage {
+    width: 100%;
+    max-width: 150px; /* Controla el tamaño máximo de la imagen */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
