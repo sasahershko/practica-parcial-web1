@@ -70,6 +70,7 @@ export default function App () {
                 favourites={favourites}
                 isVisible={isSidebarVisible}
                 toggleSidebar={toggleSideBar}
+                handleFavourites={handleFavourites}
             />
 
             {loading && (

@@ -144,3 +144,21 @@
         left: 0;
     }
 }
+
+/* FavouriteSidebar.module.css */
+.deleteButton {
+    background-color: #f44f5a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: -50px;
+    margin-bottom: 10px;
+}
+
+.deleteButton:hover {
+    background-color: #d42b3a;
+}
+
