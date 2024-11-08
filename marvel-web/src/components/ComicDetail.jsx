@@ -8,12 +8,12 @@ export default function ComicDetail ({ comic, onClose }) {
     //     return null;
     // }
 
-    const [favourites, setFavorites] = useState([]);
+    const [favourites, setFavourites] = useState([]);
 
     //cargar favoritos de local storage
     useEffect(() => {
         const savedFavourites= JSON.parse(localStorage.getItem('favouriteComics')) || [] ;
-        setFavorites(savedFavourites);
+        setFavourites(savedFavourites);
     }, []);
 
     //añadir comic a favoritos
@@ -22,9 +22,11 @@ export default function ComicDetail ({ comic, onClose }) {
     }, [favourites]);
 
     //función para añadir/eliminar favoritos
-    // const handleFavourite = (comic) =>{
+    const handleFavourite = (comic) =>{
+        const favourite = comic;
 
-    // };
+        console.log('entro');
+    };
 
     return (
         <div className={styles.modalBackground} onClick={onClose}>
@@ -61,6 +63,10 @@ export default function ComicDetail ({ comic, onClose }) {
                     ) : (
                         <p>No hay personajes disponibles para este cómic.</p>
                     )}
+
+                    <button type="button" onClick={handleFavourite}>
+                        {favourites.includes(comic.id) ? 'Eliminar de favoritos' : 'Añadir a favoritos'}
+                    </button>
                 </div>
             </div>
         </div>
