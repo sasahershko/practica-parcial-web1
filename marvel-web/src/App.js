@@ -17,9 +17,11 @@ export default function App () {
     });
 
     useEffect(() => {
+        setLoading(true);
         const getComics = async () => {
             const comicData = await fetchInfo('comics');
             setComics(comicData);
+            setLoading(false);
         };
         getComics();
     }, []);
