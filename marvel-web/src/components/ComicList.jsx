@@ -19,7 +19,7 @@ export default function ComicList({ comics, onSelectComic }) {
                         className={styles.comicImage}
                     />
                     <h3 className={styles.comicTitle}>{comic.title}</h3>
-                    <p className={styles.comicTitle}>{new Date(comic.modified).toLocaleDateString('es-ES', {year: 'numeric', month:'numeric', day:'numeric'})}</p>
+                    <p className={styles.comicTitle}>{isNaN(new Date(comic.modified)) ? "No disponible" : new Date(comic.modified).toLocaleDateString('es-ES', {year:'numeric', month:'numeric', day:'numeric'})}</p>
                 </div>
             ))}
         </div>

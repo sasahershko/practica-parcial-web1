@@ -48,7 +48,7 @@ export default function ComicDetail ({ comic, onClose, handleFavourite, favourit
                 />
                 <p><strong>Descripción:</strong> {comic.description || "No hay descripción disponible."}</p>
                 <p><strong>Número de páginas:</strong> {comic.pageCount}</p>
-                <p><strong>Fecha de modificación:</strong> {new Date(comic.modified).toLocaleDateString('es-ES', {year:'numeric', month:'numeric', day:'numeric'})}</p>
+                <p><strong>Fecha de modificación:</strong>{isNaN(new Date(comic.modified)) ? "No disponible" : new Date(comic.modified).toLocaleDateString('es-ES', {year:'numeric', month:'numeric', day:'numeric'})} </p>
                 <p><strong>Series:</strong> {comic.series.name}</p>
                 <p><strong>Precio:</strong> {comic.prices[0].price ? `${comic.prices[0].price}$` : "No disponible"}</p>
 
