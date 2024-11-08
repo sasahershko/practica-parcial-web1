@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+/* Sidebar principal oculto inicialmente */
+.sidebar {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Oculto inicialmente */
+    height: 100%;
+    background-color: #151515;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+    transition: left 0.4s ease;
+    z-index: 1000;
+    font-family: 'Raleway', sans-serif;
+}
+
+.sidebar.visible {
+    left: 0; /* Se desplaza a la vista cuando está visible */
+}
+
+.sidebar h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffa516;
+}
+
+/* Botón para abrir el sidebar */
+.openSidebarButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffa516;
+    color: #151515;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1100;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.openSidebarButton:hover {
+    background-color: #e5940a;
+    transform: scale(1.05);
+}
+
+/* Botón para cerrar el sidebar */
+.closeSidebarButton {
+    background: none;
+    border: none;
+    color: #ffa516;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: none; /* Oculto por defecto */
+}
+
+/* Solo se muestra cuando el sidebar está abierto */
+.sidebar.visible .closeSidebarButton {
+    display: block;
+}
+
+.closeSidebarButton:hover {
+    color: #e5940a;
+}
+
+/* Estilo de los ítems de favoritos */
+.favoriteItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #222; /* Fondo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.favoriteItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto borde rojo tipo Marvel */
+.favoriteItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.favoriteItem:hover::before {
+    opacity: 1;
+}
+
+.favoriteImage {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff0000; /* Borde rojo alrededor de la imagen */
+}
+
+.favoriteItem h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #ffa516; /* Color dorado para resaltar */
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    background-color: #000; /* Fondo negro en el título */
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        left: -100%;
+    }
+
+    .sidebar.visible {
+        left: 0;
+    }
+}

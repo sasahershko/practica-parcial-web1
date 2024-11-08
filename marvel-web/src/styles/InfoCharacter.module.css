@@ -1,5 +1,6 @@
 /* InfoCharacter.module.css */
 
+/* Contenedor principal del personaje */
 .characterContainer {
     display: flex;
     flex-direction: column;
@@ -8,25 +9,98 @@
     background-color: #1e2228;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 200px;
-    margin: 10px auto;
+    width: 150px;
+    height: 250px;
+    margin: 10px;
     border: 2px solid #ffa516;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.characterContainer:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .characterName {
     font-size: 1.2rem;
     font-weight: bold;
     color: #ffdd00;
-    margin-bottom: 10px;
+    margin-top: 10px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .characterImage {
     width: 100%;
-    max-width: 150px;
+    max-width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal background */
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Modal content */
+.modalContent {
+    background-color: #1e2228;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.characterThumbnail {
+    width: 100%;
+    max-width: 120px; /* Tamaño pequeño para la miniatura */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
+}
+
+.modalCharacterImage {
+    width: 100%;
+    max-width: 500px; /* Tamaño más grande para el modal */
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto 15px; /* Centra la imagen horizontalmente y añade margen inferior */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: block; /* Asegura que el margen auto funcione correctamente */
+}
+
+/* Botón de cierre */
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #ffa516;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.closeButton:hover {
+    transform: scale(1.1);
+    color: #ffdd00;
 }

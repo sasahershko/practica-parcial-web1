@@ -3,13 +3,18 @@ import {fetchInfo } from './utils/marvelApi';
 import {useState, useEffect} from 'react';
 import ComicList from './components/ComicList';
 import ComicDetail from './components/ComicDetail';
+import FavouriteSidebar from './components/FavouriteSidebar';
 
 export default function App () {
     const [comics, setComics] = useState([]);
     const [selectedComic, setSelectedComic] = useState(null); 
     const [showModal, setShowModal] = useState(false); 
-
     const [loading, setLoading] = useState(false);
+
+    const [isSidebarVisible, setSideBarVisible] = useState(false);
+    const [favourites, setFavourites] = useState(() =>{
+        return JSON.parse(localStorage.getItem('favouriteComics')) || [];
+    });
 
     useEffect(() => {
         const getComics = async () => {
@@ -18,6 +23,11 @@ export default function App () {
         };
         getComics();
     }, []);
+
+    //añadir comic a favoritos
+    useEffect(()=>{
+        localStorage.setItem('favouriteComics', JSON.stringify(favourites));
+    }, [favourites]);
 
 
     const handleSelectComic = async (info) => {
@@ -35,10 +45,32 @@ export default function App () {
         setSelectedComic(null); 
     };
 
+    const toggleSideBar = () =>{
+        setSideBarVisible(!isSidebarVisible);
+    };
+
+    const handleFavourites = (comic) =>{
+        if(!favourites.some((fav) => fav.id === comic.id)){  
+            setFavourites([...favourites, comic]);
+        }   
+        else{
+            setFavourites(favourites.filter((fav) => fav.id !== comic.id));
+        }
+    };
+
+
     return (
         <div>
             <h1 className='title'>Marvel Comics</h1>
             <ComicList comics={comics} onSelectComic={handleSelectComic} />
+
+  
+            <FavouriteSidebar 
+                onSelectComic={handleSelectComic} 
+                favourites={favourites}
+                isVisible={isSidebarVisible}
+                toggleSidebar={toggleSideBar}
+            />
 
             {loading && (
                 <div className="spinner-overlay">
@@ -46,7 +78,7 @@ export default function App () {
                 </div>
             )}
 
-            {showModal && !loading && (<ComicDetail comic={selectedComic} onClose={closeModal} />)}
+            {showModal && !loading && (<ComicDetail comic={selectedComic} onClose={closeModal} handleFavourite={handleFavourites} favourites={favourites}/>)}
         </div>
     );
 };

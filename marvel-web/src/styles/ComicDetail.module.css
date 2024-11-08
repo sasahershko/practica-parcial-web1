@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
+
 /* Animación de apertura */
 @keyframes fadeInScale {
     from {
@@ -99,7 +100,7 @@
     line-height: 1.2;
 }
 
-/* Estilo de las etiquetas (Descripción, Número de páginas, etc.) */
+
 .modalContent p strong {
     font-weight: bold;
     color: #ffa516;
@@ -108,7 +109,6 @@
     margin-right: 5px;
 }
 
-/* Valores de los detalles */
 .modalContent p {
     color: #dddddd;
     font-size: 1rem;
@@ -116,7 +116,7 @@
     margin-top: 8px;
 }
 
-/* Sección de personajes */
+
 .characterSection h3 {
     font-weight: bold;
     color: #ffdd00;
@@ -127,7 +127,7 @@
     text-align: left;
 }
 
-/* Lista de personajes */
+
 .characterSection ul {
     list-style-type: disc;
     padding-left: 20px;
@@ -145,4 +145,65 @@
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 5px;
+}
+
+.favoriteButton {
+    background-color: #ffa516;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+}
+
+.favoriteButton:hover {
+    background-color: #e5940a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.favoriteButton.remove {
+    background-color: #f44f5a;
+    border-color: #d4424d;
+}
+
+.favoriteButton.remove:hover {
+    background-color: #c2353f;
+    border-color: #a62d34;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.favoriteButton::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 8px;
+    z-index: -1;
+    background: linear-gradient(45deg, #ffdd00, #ffa516, #e5940a);
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.favoriteButton:hover::before {
+    opacity: 1;
+}
+
+/* Ajustes en el contenedor de personajes */
+.charactersContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Diseño en columnas ajustables */
+    gap: 20px;
+    padding: 20px 0;
+    justify-items: center;
 }

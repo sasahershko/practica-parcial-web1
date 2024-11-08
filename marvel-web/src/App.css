@@ -50,3 +50,13 @@ body{
     0% { background-position: 0%; }
     100% { background-position: 100%; }
 }
+
+/* PARA OCULTAR SCROLLBAR */
+* {
+    scrollbar-width: none; /* firefox */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* chrome, safari y edge */
+}
+
